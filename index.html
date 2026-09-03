@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Options Sandbox</title>
+
+  <link rel="stylesheet" href="src/style.css">
+  <script type="module" src="src/main.js"></script>
+</head>
+
+<body>
+  <main>
+    <h1>Options Sandbox</h1>
+
+    <p>Learn how options work by changing the numbers</p>
+
+    <label for="option-type">Option type:</label>
+    <select id="option-type">
+      <option value="call">Long Call</option>
+      <option value="put">Long Put</option>
+    </select>
+
+    <label for="stock-price">Stock price at expiration:</label>
+    <input id="stock-price" type="number" value="120" step="0.01">
+
+    <label for="strike-price">Strike price:</label>
+    <input id="strike-price" type="number" value="100" step="0.01">
+
+    <label for="premium">Premium paid per share:</label>
+    <input id="premium" type="number" value="5" step="0.01">
+
+    <label for="bid">Bid price:</label>
+    <input id="bid" type="number" value="2.80" step="0.01">
+
+    <label for="ask">Ask price:</label>
+    <input id="ask" type="number" value="3.00" step="0.01">
+
+    <button id="calculate-button">Calculate</button>
+
+    <p id="profit-result"></p>
+    <p id="break-even-result"></p>
+    <p id="spread-result"></p>
+    <p id="message-result"></p>
+  </main>
+</body>
+</html>
