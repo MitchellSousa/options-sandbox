@@ -28,3 +28,64 @@ button {
   border-radius: 6px;
   cursor: pointer;
 }
+
+.results {
+  margin-top: 32px;
+  padding-top: 24px;
+  border-top: 1px solid #374151;
+}
+
+.results h2 {
+  margin-top: 0;
+}
+
+.result-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+.result-card {
+  padding: 16px;
+  background-color: #111827;
+  border: 1px solid #374151;
+  border-radius: 8px;
+}
+
+.result-label {
+  display: block;
+  color: #9ca3af;
+  font-size: 14px;
+}
+
+.result-value {
+  display: block;
+  margin-top: 8px;
+  font-size: 20px;
+}
+
+.message-result {
+  margin-top: 16px;
+  padding: 14px;
+  border-radius: 4px;
+}
+.message-result.in-the-money {
+  color: #dcfce7;
+  background-color: #14532d;
+  border-left-color: #4ade80;
+}
+.message-result.out-of-the-money {
+  color: #fee2e2;
+  background-color: #7f1d1d;
+  border-left-color: #f87171;
+}
+.message-result.warning {
+  color: #fef3c7;
+  background-color: #78350f;
+  border-left-color: #fbbf24;
+}
+.message-result.break-even {
+  color: #dbeafe;
+  background-color: #1e3a8a;
+  border-left-color: #60a5fa;
+}

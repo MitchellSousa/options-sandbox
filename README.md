@@ -4,10 +4,13 @@ An interactive educational simulator for learning basic option payoff behavior.
 
 ## Current features
 
-- Long call and long put payoff calculations
-- Break-even price calculation
-- Bid/ask spread calculation
+- Long-call and long-put payoff calculations at expiration
+- Profit/loss per share and per standard 100-share contract
+- Maximum-loss calculation for long options
+- Break-even and intrinsic-value calculations
+- Bid/ask spread cost display
 - Input validation
+- Color-coded scenario feedback for profitable, losing, break-even, and in-the-money-but-still-losing positions
 - Interactive browser interface
 
 ## How to run locally

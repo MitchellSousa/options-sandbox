@@ -29,6 +29,9 @@
     <label for="premium">Premium paid per share:</label>
     <input id="premium" type="number" value="5" step="0.01">
 
+    <label for="contracts">Number of contracts:</label>
+    <input id="contracts" type="number" value="1" min="1" step="1">
+
     <label for="bid">Bid price:</label>
     <input id="bid" type="number" value="2.80" step="0.01">
 
@@ -37,10 +40,39 @@
 
     <button id="calculate-button">Calculate</button>
 
-    <p id="profit-result"></p>
-    <p id="break-even-result"></p>
-    <p id="spread-result"></p>
-    <p id="message-result"></p>
+    <section class="results" aria-live="polite">
+      <h2>Scenario results</h2>
+
+      <p id="message-result" class="message-result"></p>
+
+      <div class="result-grid">
+        <article class="result-card">
+          <span class="result-label">Profit / loss per share</span>
+          <strong id="profit-result" class="result-value">—</strong>
+        </article>
+
+        <article class="result-card">
+          <span class="result-label">Total profit / loss</span>
+          <strong id="contract-profit-result" class="result-value">—</strong>
+        </article>
+
+        <article class="result-card">
+          <span class="result-label">Maximum loss</span>
+          <strong id="max-loss-result" class="result-value">—</strong>
+        </article>
+
+        <article class="result-card">
+          <span class="result-label">Break-even price</span>
+          <strong id="break-even-result" class="result-value">—</strong>
+        </article>
+
+        <article class="result-card">
+          <span class="result-label">Bid / ask spread</span>
+          <strong id="spread-result" class="result-value">—</strong>
+        </article>
+      </div>
+
+    </section>
   </main>
 </body>
 </html>

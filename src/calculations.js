@@ -17,3 +17,21 @@ export function breakEven(type, strike, premium) {
 export function spreadCost(bid, ask) {
   return ask - bid;
 }
+
+const SHARES_PER_CONTRACT = 100;
+
+export function totalContractProfit(profitPerShare, contracts) {
+  return profitPerShare * SHARES_PER_CONTRACT * contracts;
+}
+
+export function maximumLoss(premium, contracts) {
+  return premium * SHARES_PER_CONTRACT * contracts;
+}
+
+export function intrinsicValue(type, stockPrice, strike) {
+  if (type === "call") {
+    return Math.max(stockPrice - strike, 0);
+  }
+
+  return Math.max(strike - stockPrice, 0);
+}
