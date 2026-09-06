@@ -23,6 +23,11 @@
     <label for="stock-price">Stock price at expiration:</label>
     <input id="stock-price" type="number" value="120" step="0.01">
 
+    <label for="stock-slider">Try a different stock price:</label>
+    <input id="stock-slider" type="range" min="0" max="200" value="120" step="0.50">
+
+<output id="stock-slider-value" class="slider-value">$120.00</output>
+
     <label for="strike-price">Strike price:</label>
     <input id="strike-price" type="number" value="100" step="0.01">
 
@@ -39,6 +44,8 @@
     <input id="ask" type="number" value="3.00" step="0.01">
 
     <button id="calculate-button">Calculate</button>
+
+    <button id="save-original-button" class="secondary-button">Set current scenario as original</button>
 
     <section class="results" aria-live="polite">
       <h2>Scenario results</h2>
@@ -72,6 +79,13 @@
         </article>
       </div>
 
+    </section>
+
+    <section class="comparison" aria-live="polite">
+      <h2>Compared with original</h2>
+      <p id="comparison-result">
+        Set a scenario as original, then move the slider to compare outcomes.
+      </p>
     </section>
   </main>
 </body>

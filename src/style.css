@@ -89,3 +89,39 @@ button {
   background-color: #1e3a8a;
   border-left-color: #60a5fa;
 }
+
+input[type="range"] {
+  width: 100%;
+  padding: 0;
+  margin-bottom: 6px;
+  accent-color: #22c55e;
+}
+
+.slider-value {
+  display: block;
+  margin-bottom: 20px;
+  color: #d1d5db;
+}
+
+.secondary-button {
+  background-color: #374151;
+  color: #ffffff;
+}
+
+.comparison {
+  margin-top: 24px;
+  padding: 16px;
+  background-color: #111827;
+  border: 1px solid #374151;
+  border-radius: 8px;
+}
+
+.comparison h2 {
+  margin-top: 0;
+  font-size: 18px;
+}
+
+.comparison p {
+  margin-bottom: 0;
+  color: #d1d5db;
+}

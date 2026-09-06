@@ -22,6 +22,13 @@ const profitResult = document.getElementById("profit-result");
 const breakEvenResult = document.getElementById("break-even-result");
 const spreadResult = document.getElementById("spread-result");
 const messageResult = document.getElementById("message-result");
+const stockSlider = document.getElementById("stock-slider");
+const stockSliderValue = document.getElementById("stock-slider-value");
+const saveOriginalButton = document.getElementById("save-original-button");
+const comparisonResult = document.getElementById("comparison-result");
+
+let currentScenario = null;
+let originalScenario = null;
 
 function formatMoney(amount) {
   return "$" + amount.toFixed(2);
@@ -65,11 +72,17 @@ calculateButton.addEventListener("click", function () {
   const maxLoss = maximumLoss(premium, contracts);
   const intrinsic = intrinsicValue(optionType, stockPrice, strikePrice);
 
+  currentScenario = {
+    stockPrice: stockPrice,
+    totalProfit: totalProfit
+  };
+  updateComparison();
+
   profitResult.textContent = formatSignedMoney(profit);
   contractProfitResult.textContent = formatSignedMoney(totalProfit) + " for " + contracts + " contract(s)";
   maxLossResult.textContent = "-" + formatMoney(maxLoss);
   breakEvenResult.textContent = formatMoney(breakEvenPrice);
-  spreadResult.textContent = formatMoney(spread) + " / share · " + formatMoney(spread * 100) + " / contract"; 
+  spreadResult.textContent = formatMoney(spread) + " / share · " + formatMoney(spread * 100) + " / contract";
 
   messageResult.classList.remove(
     "in-the-money",
@@ -91,4 +104,55 @@ calculateButton.addEventListener("click", function () {
     messageResult.classList.add("break-even");
     messageResult.textContent = "This option reaches break-even at expiration.";
   }
+});
+
+function syncSliderWithPriceInput() {
+  const stockPrice = Number(stockInput.value);
+  if (Number.isFinite(stockPrice)) {
+    stockSlider.max = Math.max(200, stockPrice * 1.5);
+    stockSlider.value = stockPrice;
+    stockSliderValue.textContent = formatMoney(stockPrice);
+  }
+}
+
+stockSlider.addEventListener("input", function () {
+  stockInput.value = stockSlider.value;
+  stockSliderValue.textContent = formatMoney(Number(stockSlider.value));
+
+  calculateButton.click();
+});
+
+stockInput.addEventListener("input", syncSliderWithPriceInput);
+
+syncSliderWithPriceInput();
+
+function updateComparison() {
+  if (originalScenario === null || currentScenario === null) {
+    return;
+  }
+
+  const stockPriceChange = currentScenario.stockPrice - originalScenario.stockPrice;
+  const totalProfitChange = currentScenario.totalProfit - originalScenario.totalProfit;
+
+  comparisonResult.textContent =
+    "Stock price changed " + formatSignedMoney(stockPriceChange) +
+    ". Total profit/loss changed " + formatSignedMoney(totalProfitChange) +
+    " from the original scenario.";
+}
+
+saveOriginalButton.addEventListener("click", function () {
+  calculateButton.click();
+
+  if (currentScenario === null) {
+    return;
+  }
+
+  originalScenario = {
+    stockPrice: currentScenario.stockPrice,
+    totalProfit: currentScenario.totalProfit
+  };
+
+  comparisonResult.textContent =
+    "Original scenario saved at stock price " + formatMoney(originalScenario.stockPrice) +
+    " with total profit/loss of " + formatSignedMoney(originalScenario.totalProfit) + ".";
 });
