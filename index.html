@@ -26,7 +26,7 @@
     <label for="stock-slider">Try a different stock price:</label>
     <input id="stock-slider" type="range" min="0" max="200" value="120" step="0.50">
 
-<output id="stock-slider-value" class="slider-value">$120.00</output>
+    <output id="stock-slider-value" class="slider-value">$120.00</output>
 
     <label for="strike-price">Strike price:</label>
     <input id="strike-price" type="number" value="100" step="0.01">
@@ -55,27 +55,27 @@
       <div class="result-grid">
         <article class="result-card">
           <span class="result-label">Profit / loss per share</span>
-          <strong id="profit-result" class="result-value">—</strong>
+          <strong id="profit-result" class="result-value">-</strong>
         </article>
 
         <article class="result-card">
           <span class="result-label">Total profit / loss</span>
-          <strong id="contract-profit-result" class="result-value">—</strong>
+          <strong id="contract-profit-result" class="result-value">-</strong>
         </article>
 
         <article class="result-card">
           <span class="result-label">Maximum loss</span>
-          <strong id="max-loss-result" class="result-value">—</strong>
+          <strong id="max-loss-result" class="result-value">-</strong>
         </article>
 
         <article class="result-card">
           <span class="result-label">Break-even price</span>
-          <strong id="break-even-result" class="result-value">—</strong>
+          <strong id="break-even-result" class="result-value">-</strong>
         </article>
 
         <article class="result-card">
           <span class="result-label">Bid / ask spread</span>
-          <strong id="spread-result" class="result-value">—</strong>
+          <strong id="spread-result" class="result-value">-</strong>
         </article>
       </div>
 
@@ -87,6 +87,92 @@
         Set a scenario as original, then move the slider to compare outcomes.
       </p>
     </section>
+
+    <section class="model-panel" aria-labelledby="model-heading">
+  <h2 id="model-heading">Theoretical value today</h2>
+
+  <p>
+    Estimate an option’s current theoretical value using the
+    Black–Scholes model.
+  </p>
+
+  <label for="model-option-type">Option type:</label>
+  <select id="model-option-type">
+    <option value="call">Call</option>
+    <option value="put">Put</option>
+  </select>
+
+  <label for="current-stock-price">Current stock price:</label>
+  <input
+    id="current-stock-price"
+    type="number"
+    value="100"
+    min="0.01"
+    step="0.01"
+  >
+
+  <label for="model-strike">Strike price:</label>
+  <input
+    id="model-strike"
+    type="number"
+    value="100"
+    min="0.01"
+    step="0.01"
+  >
+
+  <label for="days-remaining">Days remaining:</label>
+  <input
+    id="days-remaining"
+    type="number"
+    value="365"
+    min="1"
+    step="1"
+  >
+
+  <label for="volatility">Implied volatility (%):</label>
+  <input
+    id="volatility"
+    type="number"
+    value="20"
+    min="0.01"
+    step="0.01"
+  >
+
+  <label for="interest-rate">Risk-free interest rate (%):</label>
+  <input
+    id="interest-rate"
+    type="number"
+    value="5"
+    step="0.01"
+  >
+
+  <button id="model-calculate-button" type="button">
+    Estimate theoretical value
+  </button>
+
+  <div class="model-results">
+    <article class="result-card">
+      <span class="result-label">Theoretical value per share</span>
+      <strong id="model-price-result" class="result-value">-</strong>
+    </article>
+
+    <article class="result-card">
+      <span class="result-label">Theoretical contract value</span>
+      <strong id="model-contract-result" class="result-value">-</strong>
+    </article>
+  </div>
+
+  <p id="model-message" class="model-message">
+    Enter the model assumptions and calculate an estimate.
+  </p>
+
+  <p class="model-assumptions">
+    Simplified assumptions: European exercise, no dividends, constant
+    volatility and interest rate. This is an educational estimate, not
+    a market-price prediction.
+  </p>
+</section>
+
   </main>
 </body>
 </html>

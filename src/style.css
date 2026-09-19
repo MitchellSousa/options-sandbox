@@ -125,3 +125,57 @@ input[type="range"] {
   margin-bottom: 0;
   color: #d1d5db;
 }
+
+.model-panel {
+  margin-top: 32px;
+  padding: 24px;
+  background-color: #111827;
+  border: 1px solid #374151;
+  border-radius: 8px;
+}
+
+.model-panel h2 {
+  margin-top: 0;
+}
+
+.model-results {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.model-message {
+  margin-top: 16px;
+  padding: 14px;
+  border-left: 4px solid #60a5fa;
+  border-radius: 4px;
+  color: #dbeafe;
+  background-color: #1e3a8a;
+}
+
+.model-message.success {
+  color: #dcfce7;
+  background-color: #14532d;
+  border-left-color: #4ade80;
+}
+
+.model-message.error {
+  color: #fee2e2;
+  background-color: #7f1d1d;
+  border-left-color: #f87171;
+}
+
+.model-assumptions {
+  margin-top: 16px;
+  color: #9ca3af;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+@media (max-width: 600px) {
+  .result-grid,
+  .model-results {
+    grid-template-columns: 1fr;
+  }
+}
